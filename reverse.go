@@ -10,11 +10,7 @@ import (
 
 // Reverse available migrations based on the provided context.
 func Reverse(ctx *cli.Context) error {
-	err := reverse(service, ctx.Bool("all"), logger)
-	if err != nil {
-		return err
-	}
-	return nil
+	return reverse(service, ctx.Bool("all"), logger)
 }
 
 func reverse(service Servicer, all bool, logger *log.Logger) error {

@@ -9,11 +9,7 @@ import (
 
 // Apply available migrations based on the provided context.
 func Apply(ctx *cli.Context) error {
-	err := apply(service, ctx.Bool("all"), logger)
-	if err != nil {
-		return err
-	}
-	return nil
+	return apply(service, ctx.Bool("all"), logger)
 }
 
 func apply(service Servicer, all bool, logger *log.Logger) error {
