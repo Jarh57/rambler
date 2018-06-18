@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/bradfitz/slice"
 	"github.com/elwinar/rambler/log"
@@ -10,11 +9,12 @@ import (
 )
 
 // Reverse available migrations based on the provided context.
-func Reverse(ctx *cli.Context) {
+func Reverse(ctx *cli.Context) error {
 	err := reverse(service, ctx.Bool("all"), logger)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		return err
 	}
+	return nil
 }
 
 func reverse(service Servicer, all bool, logger *log.Logger) error {
